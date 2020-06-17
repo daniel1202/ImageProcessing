@@ -18,12 +18,19 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 
+
 public class Controller {
     public ImageView imageView;
     public BufferedImage bufferedImage;
     public Image image;
     public AnchorPane panel;
 
+    public ImageProcessor processor;
+
+    public void setProcessor(ImageProcessor processor) {
+        this.processor = processor;
+    }
+    
     public void loadImage(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("załaduj zdjęcie");
