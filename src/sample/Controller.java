@@ -2,8 +2,10 @@ package sample;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -24,6 +26,13 @@ public class Controller {
     public BufferedImage bufferedImage;
     public Image image;
     public AnchorPane panel;
+    public Slider kontrast;
+    public Slider nasycenie;
+    public Slider jasnosc;
+    public Slider temperatura;
+    public Slider balans;
+    public Slider wyostrzanie;
+    public Slider rozmycie;
 
     public ImageProcessor processor;
 
@@ -76,4 +85,31 @@ public class Controller {
         }
     }
 
+    public void KontrastChange(MouseEvent mouseEvent) {
+        System.out.println(kontrast.getValue());
+    }
+
+    public void NasycenieChanged(MouseEvent mouseEvent) {
+        System.out.println(nasycenie.getValue());
+    }
+
+    public void JasnoscChanged(MouseEvent mouseEvent) {
+        System.out.println(jasnosc.getValue());
+    }
+
+    public void TemperaturaChanged(MouseEvent mouseEvent) {
+        System.out.println(temperatura.getValue());
+    }
+
+    public void BalansChanged(MouseEvent mouseEvent) {
+        System.out.println(balans.getValue());
+    }
+
+    public void WyostrzenieChanged(MouseEvent mouseEvent) {
+        System.out.println(wyostrzanie.getValue());
+    }
+
+    public void RozmycieChanged(MouseEvent mouseEvent) {
+        System.out.println(rozmycie.getValue());
+    }
 }
