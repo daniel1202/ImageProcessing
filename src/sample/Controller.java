@@ -19,6 +19,7 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
+import java.rmi.server.ExportException;
 
 
 public class Controller {
@@ -33,11 +34,15 @@ public class Controller {
     public Slider balans;
     public Slider wyostrzanie;
     public Slider rozmycie;
+    private File outfile = new File("/swap/image.jpg");
+    private File processedfile = new File("/swap/processed.jpg");
 
     public ImageProcessor processor;
 
     public void setProcessor(ImageProcessor processor) {
         this.processor = processor;
+        int i = 0;
+        System.out.println("XDDDDDDD");
     }
     
     public void loadImage(ActionEvent actionEvent) {
@@ -85,8 +90,18 @@ public class Controller {
         }
     }
 
-    public void KontrastChange(MouseEvent mouseEvent) {
-        System.out.println(kontrast.getValue());
+    public void KontrastChange(MouseEvent mouseEvent) throws IOException {
+        BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
+        try {
+            ImageIO.write(temp, "JPG", outfile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        processor.contrast((int)Math.round(kontrast.getValue()));
+        bufferedImage = ImageIO.read(processedfile);
+        image = SwingFXUtils.toFXImage(bufferedImage,null);
+        imageView.setImage(image);
+
     }
 
     public void NasycenieChanged(MouseEvent mouseEvent) {
@@ -111,5 +126,10 @@ public class Controller {
 
     public void RozmycieChanged(MouseEvent mouseEvent) {
         System.out.println(rozmycie.getValue());
+    }
+
+    @Override
+    public String toString() {
+        return "Instance";
     }
 }
