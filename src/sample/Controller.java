@@ -52,9 +52,7 @@ public class Controller {
 
     public void setProcessor(ImageProcessor processor) {
         this.processor = processor;
-        int i = 0;
         System.out.println("Connection established");
-        //System.out.println(this.processor);
     }
     
     public void loadImage(ActionEvent actionEvent) throws IOException {
@@ -119,10 +117,6 @@ public class Controller {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Instance";
-    }
 
     public void loadHistograms(ActionEvent actionEvent) throws IOException {
         histograms("swap/image.png");
