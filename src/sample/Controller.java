@@ -53,7 +53,7 @@ public class Controller {
     public void setProcessor(ImageProcessor processor) {
         this.processor = processor;
         int i = 0;
-        System.out.println("XDDDDDDD");
+        System.out.println("Connection established");
         //System.out.println(this.processor);
     }
     
@@ -129,18 +129,7 @@ public class Controller {
     }
 
     public void slidersChange(MouseEvent mouseEvent) throws IOException {
-        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
-        ImageIO.write(temp, "PNG", outfile);
-        processor.all_operations((int)Math.round(kontrast.getValue()),
-                (int)Math.round(jasnosc.getValue()),
-                (int)Math.round(nasycenie.getValue()),
-                (int)ostrosc.getValue(),
-                (int)temperatura.getValue(),
-                balansCzerwony.getValue(), balansZielony.getValue(), balansNiebieski.getValue());
-        bufferedImage = ImageIO.read(processedfile);
-        image = SwingFXUtils.toFXImage(bufferedImage,null);
-        imageView.setImage(image);
-        histograms("swap/processed.png");
+        callProcessor();
     }
 
     private void histograms(String path) throws IOException {
@@ -162,38 +151,59 @@ public class Controller {
         lumView.setImage(lum);
     }
 
+    public void callProcessor() throws IOException {
+        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+        ImageIO.write(temp, "PNG", outfile);
+        processor.all_operations((int)Math.round(kontrast.getValue()),
+                (int)Math.round(jasnosc.getValue()),
+                (int)Math.round(nasycenie.getValue()),
+                (int)ostrosc.getValue(),
+                (int)temperatura.getValue(),
+                balansCzerwony.getValue(), balansZielony.getValue(), balansNiebieski.getValue());
+        bufferedImage = ImageIO.read(processedfile);
+        image = SwingFXUtils.toFXImage(bufferedImage,null);
+        imageView.setImage(image);
+        histograms("swap/processed.png");
+    }
 
-
-    public void kontrastReset(ActionEvent actionEvent) {
+    public void kontrastReset(ActionEvent actionEvent) throws IOException {
         kontrast.setValue(0);
+        callProcessor();
     }
 
-    public void nasycenieReset(ActionEvent actionEvent) {
+    public void nasycenieReset(ActionEvent actionEvent) throws IOException {
         nasycenie.setValue(0);
+        callProcessor();
     }
 
-    public void jasnoscReset(ActionEvent actionEvent) {
+    public void jasnoscReset(ActionEvent actionEvent) throws IOException {
         jasnosc.setValue(0);
+        callProcessor();
     }
 
-    public void temperaturaReset(ActionEvent actionEvent) {
+    public void temperaturaReset(ActionEvent actionEvent) throws IOException {
         temperatura.setValue(5600);
+        callProcessor();
     }
 
-    public void ostroscReset(ActionEvent actionEvent) {
-        ostrosc.setValue(0);
+    public void ostroscReset(ActionEvent actionEvent) throws IOException {
+        ostrosc.setValue(1);
+        callProcessor();
     }
 
-    public void czerwonyReset(ActionEvent actionEvent) {
+    public void czerwonyReset(ActionEvent actionEvent) throws IOException {
         balansCzerwony.setValue(1);
+        callProcessor();
     }
 
-    public void zielonyReset(ActionEvent actionEvent) {
+    public void zielonyReset(ActionEvent actionEvent) throws IOException {
         balansZielony.setValue(1);
+        callProcessor();
     }
 
-    public void niebieskiReset(ActionEvent actionEvent) {
+    public void niebieskiReset(ActionEvent actionEvent) throws IOException {
         balansNiebieski.setValue(1);
+        callProcessor();
     }
 }
 

@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../javafx-sdk-11.0.2/lib" />
       <root url="jar://$USER_HOME$/AppData/Local/Programs/Python/Python38/share/py4j/py4j0.10.9.jar!/" />
+      <root url="jar://$USER_HOME$/AppData/Local/Programs/Python/Python37/share/py4j/py4j0.10.9.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

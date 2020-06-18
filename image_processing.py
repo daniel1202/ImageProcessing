@@ -15,8 +15,8 @@ class ImageProcessing():
     def __init__(self, gateway):
         self.gateway = gateway
 
-    def histograms(self):
-        img = cv2.imread('swap/image.png')
+    def histograms(self, path):
+        img = cv2.imread(path)
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img_lum = cv2.cvtColor(img, cv2.COLOR_BGR2YCR_CB)
         histr = cv2.calcHist([img_rgb],[0],None,[256],[0,256])
@@ -58,6 +58,8 @@ class ImageProcessing():
         img.save('swap/processed.png')
 
     def sharpness(self, sharpness):
+        if sharpness < 1:
+	        sharpness = (sharpness + 10)/11
         img = Image.open('swap/image.png')
         enhancer = ImageEnhance.Sharpness(img)
         img = enhancer.enhance(sharpness)
@@ -80,6 +82,8 @@ class ImageProcessing():
         contrast = (contrast+10)/10
         brightness = (brightness+10)/10
         saturation = (saturation+10)/10
+        if sharpness < 1:
+	        sharpness = ((sharpness - (-10))/(1- (-10))) * (1- (-2)) - 2
         img = Image.open('swap/image.png')
         # contrast
         cont = ImageEnhance.Contrast(img)
