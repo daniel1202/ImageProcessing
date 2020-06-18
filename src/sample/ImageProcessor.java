@@ -1,7 +1,7 @@
 package sample;
 
 public interface ImageProcessor {
-    void histograms();
+    void histograms(String path);
     void contrast(int value);
     void brightness(int value);
     void saturation(int value);

@@ -128,8 +128,8 @@ class ImageProcessing():
             11900: (195, 210, 255),
             12000: (195, 209, 255)} 
 
-    def histograms(self):
-        img = cv2.imread('swap/image.png')
+    def histograms(self, path):
+        img = cv2.imread(path)
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img_lum = cv2.cvtColor(img, cv2.COLOR_BGR2YCR_CB)
         histr = cv2.calcHist([img_rgb],[0],None,[256],[0,256])
@@ -139,15 +139,28 @@ class ImageProcessing():
 
         plt.xlabel("Pixel value")
         plt.ylabel("Number of pixels")
+        plt.title("Red pixels")
         plt.plot(histr, color="r", label="Red")
         plt.savefig("swap/red.png")
         plt.clf()
+
+        plt.xlabel("Pixel value")
+        plt.ylabel("Number of pixels")
+        plt.title("Green pixels")
         plt.plot(histg, color="g", label="Green")
         plt.savefig("swap/green.png")
         plt.clf()
+
+        plt.xlabel("Pixel value")
+        plt.ylabel("Number of pixels")
+        plt.title("Blue pixels")
         plt.plot(histb, color="b", label="Blue")
         plt.savefig("swap/blue.png")
         plt.clf()
+
+        plt.xlabel("Pixel value")
+        plt.ylabel("Number of pixels")
+        plt.title("Luminance pixels")
         plt.plot(histl, color="grey", label="Lumi")
         plt.savefig("swap/lum.png")
         plt.clf()

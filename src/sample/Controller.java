@@ -57,7 +57,7 @@ public class Controller {
         //System.out.println(this.processor);
     }
     
-    public void loadImage(ActionEvent actionEvent) {
+    public void loadImage(ActionEvent actionEvent) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("załaduj zdjęcie");
         fileChooser.getExtensionFilters().addAll(
@@ -78,6 +78,9 @@ public class Controller {
               e.printStackTrace();
           }
         }
+        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+        ImageIO.write(temp, "PNG", outfile);
+        histograms("swap/image.png");
         resetSliders();
     }
     public void resetSliders()
@@ -93,7 +96,7 @@ public class Controller {
     }
     public void saveImage(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("załaduj zdjęcie");
+        fileChooser.setTitle("Załaduj zdjęcie");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG", "*.png"),
                 new FileChooser.ExtensionFilter("BMP", "*.bmp"),
@@ -116,56 +119,32 @@ public class Controller {
         }
     }
 
-//    public void KontrastChange(MouseEvent mouseEvent) throws IOException {
-//        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
-//        ImageIO.write(temp, "PNG", outfile);
-//        processor.contrast((int)Math.round(kontrast.getValue()));
-//        bufferedImage = ImageIO.read(processedfile);
-//        image = SwingFXUtils.toFXImage(bufferedImage,null);
-//        imageView.setImage(image);
-//
-//    }
-//
-//    public void NasycenieChanged(MouseEvent mouseEvent) throws IOException {
-//        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
-//        ImageIO.write(temp, "PNG", outfile);
-//        processor.saturation((int)Math.round(nasycenie.getValue()));
-//        bufferedImage = ImageIO.read(processedfile);
-//        image = SwingFXUtils.toFXImage(bufferedImage,null);
-//        imageView.setImage(image);
-//    }
-//
-//    public void JasnoscChanged(MouseEvent mouseEvent) {
-//        System.out.println(jasnosc.getValue());
-//    }
-//
-//    public void TemperaturaChanged(MouseEvent mouseEvent) {
-//        System.out.println(temperatura.getValue());
-//    }
-//
-//    public void BalansChanged(MouseEvent mouseEvent) {
-//        System.out.println(balans.getValue());
-//    }
-//
-//    public void WyostrzenieChanged(MouseEvent mouseEvent) {
-//        System.out.println(wyostrzanie.getValue());
-//    }
-//
-//    public void RozmycieChanged(MouseEvent mouseEvent) {
-//        System.out.println(rozmycie.getValue());
-//    }
-
-
     @Override
     public String toString() {
         return "Instance";
     }
 
     public void loadHistograms(ActionEvent actionEvent) throws IOException {
-//        BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
-//        ImageIO.write(temp, "PNG", outfile);
-//        processor.histograms();
+        histograms("swap/image.png");
+    }
 
+    public void slidersChange(MouseEvent mouseEvent) throws IOException {
+        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+        ImageIO.write(temp, "PNG", outfile);
+        processor.all_operations((int)Math.round(kontrast.getValue()),
+                (int)Math.round(jasnosc.getValue()),
+                (int)Math.round(nasycenie.getValue()),
+                (int)ostrosc.getValue(),
+                (int)temperatura.getValue(),
+                balansCzerwony.getValue(), balansZielony.getValue(), balansNiebieski.getValue());
+        bufferedImage = ImageIO.read(processedfile);
+        image = SwingFXUtils.toFXImage(bufferedImage,null);
+        imageView.setImage(image);
+        histograms("swap/processed.png");
+    }
+
+    private void histograms(String path) throws IOException {
+        processor.histograms(path);
         bufferedImage = ImageIO.read(redFile);
         red = SwingFXUtils.toFXImage(bufferedImage,null);
         redView.setImage(red);
@@ -182,19 +161,5 @@ public class Controller {
         lum = SwingFXUtils.toFXImage(bufferedImage,null);
         lumView.setImage(lum);
     }
-
-    public void slidersChange(MouseEvent mouseEvent) throws IOException {
-        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
-        ImageIO.write(temp, "PNG", outfile);
-        System.out.println();
-        processor.all_operations((int)Math.round(kontrast.getValue()),
-                (int)Math.round(jasnosc.getValue()),
-                (int)Math.round(nasycenie.getValue()),
-                (int)ostrosc.getValue(),
-                (int)temperatura.getValue(),
-                balansCzerwony.getValue(), balansZielony.getValue(), balansNiebieski.getValue());
-        bufferedImage = ImageIO.read(processedfile);
-        image = SwingFXUtils.toFXImage(bufferedImage,null);
-        imageView.setImage(image);
-    }
 }
+
