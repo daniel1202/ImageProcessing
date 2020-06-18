@@ -87,7 +87,7 @@ public class Controller {
         nasycenie.setValue(0);
         jasnosc.setValue(0);
         ostrosc.setValue(1);
-        temperatura.setValue(5600);
+        temperatura.setValue(6500);
         balansCzerwony.setValue(1);
         balansNiebieski.setValue(1);
         balansZielony.setValue(1);
