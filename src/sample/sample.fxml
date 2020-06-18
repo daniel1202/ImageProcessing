@@ -12,55 +12,61 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <VBox layoutX="98.0" prefHeight="351.0" prefWidth="219.0" spacing="4.0">
+      <VBox layoutX="11.0" prefHeight="351.0" prefWidth="306.0" spacing="4.0">
          <children>
-            <VBox prefHeight="63.0" prefWidth="219.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
+                  <Button id="Load" fx:id="loadBtn" mnemonicParsing="false" onAction="#loadImage" text="Load" />
                   <Button id="Save" fx:id="saveBtn" mnemonicParsing="false" onAction="#saveImage" text="Save">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button id="Load" fx:id="loadBtn" mnemonicParsing="false" onAction="#loadImage" text="Load">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="Histograms" mnemonicParsing="false" onAction="#loadHistograms" text="Histograms">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Button>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
                </children>
-            </VBox>
-            <VBox prefHeight="106.0" prefWidth="219.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox prefHeight="106.0" prefWidth="241.0">
                <children>
-                  <Label text="Kontrast">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <Slider fx:id="kontrast" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Slider>
-                  <Label text="Nasycenie">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <Slider fx:id="nasycenie" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="245.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="45.0" text="Kontrast" />
+                        <Button fx:id="kontrastResetBtn" mnemonicParsing="false" onAction="#kontrastReset" text="Reset">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="kontrast" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="240.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Slider>
-                  <Label text="Jasność">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="54.0" text="Nasycenie" />
+                        <Button fx:id="nasycenieResetBtn" mnemonicParsing="false" onAction="#nasycenieReset" text="Reset">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="nasycenie" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="240.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
-                  </Label>
-                  <Slider fx:id="jasnosc" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="245.0">
+                  </Slider>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="40.0" text="Jasność" />
+                        <Button fx:id="jasnoscResetBtn" mnemonicParsing="false" onAction="#jasnoscReset" text="Reset">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="jasnosc" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="240.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -69,11 +75,15 @@
             </VBox>
             <VBox prefHeight="46.0" prefWidth="219.0">
                <children>
-                  <Label text="Temperatura">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="68.0" text="Temperatura" />
+                        <Button fx:id="temperaturaResetBtn" mnemonicParsing="false" onAction="#temperaturaReset" text="Reset">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
                   <Slider fx:id="temperatura" majorTickUnit="100.0" max="12000" min="1000" minorTickCount="0" onMouseReleased="#slidersChange" snapToTicks="true" value="5600">
                      <VBox.margin>
                         <Insets />
@@ -83,12 +93,16 @@
             </VBox>
             <VBox prefHeight="47.0" prefWidth="219.0">
                <children>
-                  <Label text="Ostrość">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <Slider fx:id="ostrosc" blockIncrement="0.1" max="10.0" min="-3" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="239.0" value="1">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="41.0" text="Ostrość" />
+                        <Button fx:id="ostroscResetBtn" mnemonicParsing="false" onAction="#ostroscReset" text="Reset">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="ostrosc" blockIncrement="0.1" max="10.0" min="0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="239.0" value="1">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -97,12 +111,36 @@
             </VBox>
             <VBox prefHeight="103.0" prefWidth="219.0">
                <children>
-                  <Label text="Balans Czerwony" />
-                  <Slider fx:id="balansCzerwony" blockIncrement="0.1" max="2" min="0" onMouseReleased="#slidersChange" value="1.0" />
-                  <Label text="Balans Zielony" />
-                  <Slider fx:id="balansZielony" blockIncrement="0.1" max="2" min="0" onMouseReleased="#slidersChange" value="1.0" />
-                  <Label text="Balans Niebieski" />
-                  <Slider fx:id="balansNiebieski" blockIncrement="0.1" max="2" min="0" onMouseReleased="#slidersChange" value="1.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="89.0" text="Balans Czerwony" />
+                        <Button fx:id="czerwonyResetBtn" mnemonicParsing="false" onAction="#czerwonyReset" text="Reset">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="balansCzerwony" blockIncrement="0.1" max="10.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="76.0" text="Balans Zielony" />
+                        <Button fx:id="zielonyResetBtn" mnemonicParsing="false" onAction="#zielonyReset" text="Reset">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="balansZielony" blockIncrement="0.1" max="10.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="86.0" text="Balans Niebieski" />
+                        <Button fx:id="niebieskiResetBtn" mnemonicParsing="false" onAction="#niebieskiReset" text="Reset">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="balansNiebieski" blockIncrement="0.1" max="10.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
                </children>
             </VBox>
          </children>
@@ -110,6 +148,6 @@
       <ImageView fx:id="lumView" fitHeight="360.0" fitWidth="480.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="blueView" fitHeight="360.0" fitWidth="480.0" layoutX="960.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="redView" fitHeight="360.0" fitWidth="480.0" layoutX="480.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="greenView" fitHeight="360.0" fitWidth="480.0" layoutX="960.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="greenView" fitHeight="360.0" fitWidth="480.0" layoutX="972.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

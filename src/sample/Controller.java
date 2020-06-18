@@ -161,5 +161,52 @@ public class Controller {
         lum = SwingFXUtils.toFXImage(bufferedImage,null);
         lumView.setImage(lum);
     }
+
+    public void slidersChange(MouseEvent mouseEvent) throws IOException {
+        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+        ImageIO.write(temp, "PNG", outfile);
+        System.out.println();
+        processor.all_operations((int)Math.round(kontrast.getValue()),
+                (int)Math.round(jasnosc.getValue()),
+                (int)Math.round(nasycenie.getValue()),
+                (int)ostrosc.getValue(),
+                (int)temperatura.getValue(),
+                balansCzerwony.getValue(), balansZielony.getValue(), balansNiebieski.getValue());
+        bufferedImage = ImageIO.read(processedfile);
+        image = SwingFXUtils.toFXImage(bufferedImage,null);
+        imageView.setImage(image);
+    }
+
+    public void kontrastReset(ActionEvent actionEvent) {
+        kontrast.setValue(0);
+    }
+
+    public void nasycenieReset(ActionEvent actionEvent) {
+        nasycenie.setValue(0);
+    }
+
+    public void jasnoscReset(ActionEvent actionEvent) {
+        jasnosc.setValue(0);
+    }
+
+    public void temperaturaReset(ActionEvent actionEvent) {
+        temperatura.setValue(5600);
+    }
+
+    public void ostroscReset(ActionEvent actionEvent) {
+        ostrosc.setValue(1);
+    }
+
+    public void czerwonyReset(ActionEvent actionEvent) {
+        balansCzerwony.setValue(1);
+    }
+
+    public void zielonyReset(ActionEvent actionEvent) {
+        balansZielony.setValue(1);
+    }
+
+    public void niebieskiReset(ActionEvent actionEvent) {
+        balansNiebieski.setValue(1);
+    }
 }
 
