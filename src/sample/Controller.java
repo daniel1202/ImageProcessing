@@ -162,7 +162,7 @@ public class Controller {
         lumView.setImage(lum);
     }
 
-    
+
 
     public void kontrastReset(ActionEvent actionEvent) {
         kontrast.setValue(0);

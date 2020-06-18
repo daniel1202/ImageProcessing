@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="panel" prefHeight="740.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ImageView id="imageView" fx:id="imageView" fitHeight="360.0" fitWidth="480.0" layoutX="403.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="576.0" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="883.0" AnchorPane.topAnchor="14.0">
+      <ImageView id="imageView" fx:id="imageView" fitHeight="360.0" fitWidth="480.0" layoutX="320.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="583.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="966.0" AnchorPane.topAnchor="7.0">
          <viewport>
             <Rectangle2D />
          </viewport>
@@ -145,9 +145,9 @@
             </VBox>
          </children>
       </VBox>
-      <ImageView fx:id="lumView" fitHeight="360.0" fitWidth="480.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="blueView" fitHeight="360.0" fitWidth="480.0" layoutX="960.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="redView" fitHeight="360.0" fitWidth="480.0" layoutX="480.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="greenView" fitHeight="360.0" fitWidth="480.0" layoutX="972.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="lumView" fitHeight="300.0" fitWidth="400.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blueView" fitHeight="300.0" fitWidth="400.0" layoutX="800.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="redView" fitHeight="300.0" fitWidth="400.0" layoutX="400.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="greenView" fitHeight="300.0" fitWidth="400.0" layoutX="800.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
