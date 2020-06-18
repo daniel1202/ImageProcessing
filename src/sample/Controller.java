@@ -33,12 +33,19 @@ public class Controller {
     public Slider rozmycie;
     private File outfile = new File("swap\\image.png");
     private File processedfile = new File("swap\\processed.png");
-
+    private File redFile = new File("swap\\red.jpg");
+    private File greenFile = new File("swap\\green.jpg");
+    private File blueFile = new File("swap\\blue.jpg");
+    private File lumFile = new File("swap\\lum.jpg");
     public ImageProcessor processor;
-    public BarChart luminacja;
-    public BarChart kanalZielony;
-    public BarChart kanalNiebieski;
-    public BarChart kanalCzerwony;
+    public ImageView lumView;
+    public ImageView greenView;
+    public ImageView blueView;
+    public ImageView redView;
+    public Image red;
+    public Image green;
+    public Image blue;
+    public Image lum;
 
     public void setProcessor(ImageProcessor processor) {
         this.processor = processor;
@@ -60,7 +67,7 @@ public class Controller {
         if(file!=null)
         {
           try{
-           bufferedImage = ImageIO.read(file);
+              bufferedImage = ImageIO.read(file);
               image = SwingFXUtils.toFXImage(bufferedImage,null);
               originalimage = SwingFXUtils.toFXImage(bufferedImage,null);
               imageView.setImage(image);
@@ -68,6 +75,7 @@ public class Controller {
               e.printStackTrace();
           }
         }
+
     }
 
     public void saveImage(ActionEvent actionEvent) {
@@ -134,8 +142,28 @@ public class Controller {
         System.out.println(rozmycie.getValue());
     }
 
+
     @Override
     public String toString() {
         return "Instance";
+    }
+
+    public void loadHistograms(ActionEvent actionEvent) throws IOException {
+        //red hist
+        bufferedImage = ImageIO.read(redFile);
+        red = SwingFXUtils.toFXImage(bufferedImage,null);
+        redView.setImage(red);
+        //
+        bufferedImage = ImageIO.read(greenFile);
+        green = SwingFXUtils.toFXImage(bufferedImage,null);
+        greenView.setImage(green);
+        //
+        bufferedImage = ImageIO.read(blueFile);
+        blue = SwingFXUtils.toFXImage(bufferedImage,null);
+        blueView.setImage(blue);
+        //
+        bufferedImage = ImageIO.read(lumFile);
+        lum = SwingFXUtils.toFXImage(bufferedImage,null);
+        lumView.setImage(lum);
     }
 }

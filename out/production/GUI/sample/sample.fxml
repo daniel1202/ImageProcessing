@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -23,6 +22,11 @@
                      </VBox.margin>
                   </Button>
                   <Button id="Load" fx:id="loadBtn" mnemonicParsing="false" onAction="#loadImage" text="Load">
+                     <VBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="Histograms" mnemonicParsing="false" onAction="#loadHistograms" text="Histograms">
                      <VBox.margin>
                         <Insets left="10.0" top="5.0" />
                      </VBox.margin>
@@ -113,37 +117,9 @@
             </VBox>
          </children>
       </VBox>
-      <BarChart fx:id="kanalCzerwony" layoutX="886.0" layoutY="9.0" prefHeight="250.0" prefWidth="500.0" title="RChannel">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
-      <BarChart fx:id="kanalNiebieski" layoutX="886.0" layoutY="490.0" prefHeight="250.0" prefWidth="500.0" title="BlueChannel">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
-      <BarChart fx:id="kanalZielony" layoutX="886.0" layoutY="240.0" prefHeight="250.0" prefWidth="500.0" title="GreenChannel">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
-      <BarChart fx:id="luminacja" layoutX="386.0" layoutY="490.0" prefHeight="250.0" prefWidth="500.0" title="Luminacja">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
+      <ImageView fx:id="lumView" fitHeight="250.0" fitWidth="500.0" layoutX="511.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blueView" fitHeight="250.0" fitWidth="500.0" layoutX="1011.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="redView" fitHeight="250.0" fitWidth="500.0" layoutX="1011.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="greenView" fitHeight="250.0" fitWidth="500.0" layoutX="1011.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
