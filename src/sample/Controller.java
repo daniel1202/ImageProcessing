@@ -75,9 +75,18 @@ public class Controller {
               e.printStackTrace();
           }
         }
-
+        resetSliders();
     }
-
+    public void resetSliders()
+    {
+        kontrast.setValue(0);
+        nasycenie.setValue(0);
+        jasnosc.setValue(0);
+        temperatura.setValue(0);
+        balans.setValue(0);
+        wyostrzanie.setValue(0);
+        rozmycie.setValue(0);
+    }
     public void saveImage(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("załaduj zdjęcie");
@@ -165,5 +174,9 @@ public class Controller {
         bufferedImage = ImageIO.read(lumFile);
         lum = SwingFXUtils.toFXImage(bufferedImage,null);
         lumView.setImage(lum);
+    }
+
+    public void slidersChange(MouseEvent mouseEvent) {
+        System.out.println("test sliderów");
     }
 }
