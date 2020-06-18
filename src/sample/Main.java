@@ -9,9 +9,15 @@ import py4j.GatewayServer;
 
 public class Main extends Application {
 
+    Controller controller;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent root = loader.load();
+        controller = loader.getController();
+        GatewayServer gatewayServer =  new GatewayServer(controller);
+        gatewayServer.start();
         primaryStage.setTitle("GUI");
         primaryStage.setScene(new Scene(root, 800, 400));
         primaryStage.show();
@@ -19,9 +25,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        GatewayServer gatewayServer =  new GatewayServer(controller);
-        gatewayServer.start();
+
         launch(args);
     }
 }

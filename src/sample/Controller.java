@@ -34,8 +34,8 @@ public class Controller {
     public Slider balans;
     public Slider wyostrzanie;
     public Slider rozmycie;
-    private File outfile = new File("/swap/image.jpg");
-    private File processedfile = new File("/swap/processed.jpg");
+    private File outfile = new File("image.jpg");
+    private File processedfile = new File("processed.jpg");
 
     public ImageProcessor processor;
 
@@ -43,6 +43,7 @@ public class Controller {
         this.processor = processor;
         int i = 0;
         System.out.println("XDDDDDDD");
+        //System.out.println(this.processor);
     }
     
     public void loadImage(ActionEvent actionEvent) {
@@ -82,8 +83,10 @@ public class Controller {
                FileChooser.ExtensionFilter extensionFilter = fileChooser.getSelectedExtensionFilter();
                String extension = extensionFilter.getExtensions().get(0).substring(1);
                 if(extension.substring(1).equalsIgnoreCase("bmp")) ImageIO.write(bufferedImage,(extension.substring(1).toUpperCase()),file);
-                else { BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
-               ImageIO.write(temp,(extension.substring(1).toUpperCase()),file); }
+                else {
+                    BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
+                    ImageIO.write(temp,(extension.substring(1).toUpperCase()),file);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -92,15 +95,11 @@ public class Controller {
 
     public void KontrastChange(MouseEvent mouseEvent) throws IOException {
         BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
-        try {
-            ImageIO.write(temp, "JPG", outfile);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        processor.contrast((int)Math.round(kontrast.getValue()));
-        bufferedImage = ImageIO.read(processedfile);
-        image = SwingFXUtils.toFXImage(bufferedImage,null);
-        imageView.setImage(image);
+        ImageIO.write(temp, "jpg", outfile);
+//        processor.contrast((int)Math.round(kontrast.getValue()));
+//        bufferedImage = ImageIO.read(processedfile);
+//        image = SwingFXUtils.toFXImage(bufferedImage,null);
+//        imageView.setImage(image);
 
     }
 
