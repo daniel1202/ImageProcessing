@@ -19,8 +19,8 @@ public class Main extends Application {
         GatewayServer gatewayServer =  new GatewayServer(controller);
         gatewayServer.start();
         primaryStage.setTitle("GUI");
-        primaryStage.setScene(new Scene(root, 1700
-                , 960
+        primaryStage.setScene(new Scene(root, 1450
+                , 740
         ));
         primaryStage.show();
     }
