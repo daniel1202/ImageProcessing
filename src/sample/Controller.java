@@ -33,10 +33,10 @@ public class Controller {
     public Slider rozmycie;
     private File outfile = new File("swap\\image.png");
     private File processedfile = new File("swap\\processed.png");
-    private File redFile = new File("swap\\red.jpg");
-    private File greenFile = new File("swap\\green.jpg");
-    private File blueFile = new File("swap\\blue.jpg");
-    private File lumFile = new File("swap\\lum.jpg");
+    private File redFile = new File("swap\\red.png");
+    private File greenFile = new File("swap\\green.png");
+    private File blueFile = new File("swap\\blue.png");
+    private File lumFile = new File("swap\\lum.png");
     public ImageProcessor processor;
     public ImageView lumView;
     public ImageView greenView;
@@ -149,19 +149,22 @@ public class Controller {
     }
 
     public void loadHistograms(ActionEvent actionEvent) throws IOException {
-        //red hist
+        BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
+        ImageIO.write(temp, "PNG", outfile);
+        processor.histograms();
+
         bufferedImage = ImageIO.read(redFile);
         red = SwingFXUtils.toFXImage(bufferedImage,null);
         redView.setImage(red);
-        //
+
         bufferedImage = ImageIO.read(greenFile);
         green = SwingFXUtils.toFXImage(bufferedImage,null);
         greenView.setImage(green);
-        //
+
         bufferedImage = ImageIO.read(blueFile);
         blue = SwingFXUtils.toFXImage(bufferedImage,null);
         blueView.setImage(blue);
-        //
+
         bufferedImage = ImageIO.read(lumFile);
         lum = SwingFXUtils.toFXImage(bufferedImage,null);
         lumView.setImage(lum);

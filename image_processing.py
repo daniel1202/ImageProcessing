@@ -220,5 +220,5 @@ if __name__ == "__main__":
         callback_server_parameters=CallbackServerParameters()
     )
     processor = ImageProcessing(gateway)
-    processor.all_operations(1, 1, 1, 2, 4000, 1.5, 1, 1)
+    
     gateway.entry_point.setProcessor(processor)
