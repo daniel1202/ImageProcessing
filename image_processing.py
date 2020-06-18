@@ -190,6 +190,9 @@ class ImageProcessing():
         img.save('swap/processed.png')
 
     def all_operations(self, contrast, brightness, saturation, sharpness, temperature, r_scalar, g_scalar, b_scalar):
+        contrast = (contrast+10)/10
+        brightness = (brightness+10)/10
+        saturation = (saturation+10)/10
         img = Image.open('swap/image.png')
         # contrast
         cont = ImageEnhance.Contrast(img)
@@ -203,13 +206,13 @@ class ImageProcessing():
         # sharpness
         enhancer = ImageEnhance.Sharpness(img)
         img = enhancer.enhance(sharpness)
-        # color temperature
-        r, g, b = self.kelvin_table[temperature]
-        matrix = (r / 255.0, 0.0, 0.0, 0.0, 0.0, g / 255.0, 0.0, 0.0, 0.0, 0.0, b / 255.0, 0.0)
-        img = img.convert('RGB', matrix)
-        # color balance
-        matrix = (r_scalar, 0.0, 0.0, 0.0, 0.0, g_scalar, 0.0, 0.0, 0.0, 0.0, b_scalar, 0.0)
-        img = img.convert('RGB', matrix)
+        # # color temperature
+        # r, g, b = self.kelvin_table[temperature]
+        # matrix = (r / 255.0, 0.0, 0.0, 0.0, 0.0, g / 255.0, 0.0, 0.0, 0.0, 0.0, b / 255.0, 0.0)
+        # img = img.convert("RGB", matrix)
+        # # color balance
+        # matrix = (r_scalar, 0.0, 0.0, 0.0, 0.0, g_scalar, 0.0, 0.0, 0.0, 0.0, b_scalar, 0.0)
+        # img = img.convert("RGB", matrix)
         img.save('swap/processed.png')
 
 if __name__ == "__main__":
@@ -220,5 +223,4 @@ if __name__ == "__main__":
         callback_server_parameters=CallbackServerParameters()
     )
     processor = ImageProcessing(gateway)
-    
     gateway.entry_point.setProcessor(processor)

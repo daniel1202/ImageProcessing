@@ -75,9 +75,18 @@ public class Controller {
               e.printStackTrace();
           }
         }
-
+        resetSliders();
     }
-
+    public void resetSliders()
+    {
+        kontrast.setValue(0);
+        nasycenie.setValue(0);
+        jasnosc.setValue(0);
+        temperatura.setValue(0);
+        balans.setValue(0);
+        wyostrzanie.setValue(0);
+        rozmycie.setValue(0);
+    }
     public void saveImage(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("załaduj zdjęcie");
@@ -103,44 +112,44 @@ public class Controller {
         }
     }
 
-    public void KontrastChange(MouseEvent mouseEvent) throws IOException {
-        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
-        ImageIO.write(temp, "PNG", outfile);
-        processor.contrast((int)Math.round(kontrast.getValue()));
-        bufferedImage = ImageIO.read(processedfile);
-        image = SwingFXUtils.toFXImage(bufferedImage,null);
-        imageView.setImage(image);
-
-    }
-
-    public void NasycenieChanged(MouseEvent mouseEvent) throws IOException {
-        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
-        ImageIO.write(temp, "PNG", outfile);
-        processor.saturation((int)Math.round(nasycenie.getValue()));
-        bufferedImage = ImageIO.read(processedfile);
-        image = SwingFXUtils.toFXImage(bufferedImage,null);
-        imageView.setImage(image);
-    }
-
-    public void JasnoscChanged(MouseEvent mouseEvent) {
-        System.out.println(jasnosc.getValue());
-    }
-
-    public void TemperaturaChanged(MouseEvent mouseEvent) {
-        System.out.println(temperatura.getValue());
-    }
-
-    public void BalansChanged(MouseEvent mouseEvent) {
-        System.out.println(balans.getValue());
-    }
-
-    public void WyostrzenieChanged(MouseEvent mouseEvent) {
-        System.out.println(wyostrzanie.getValue());
-    }
-
-    public void RozmycieChanged(MouseEvent mouseEvent) {
-        System.out.println(rozmycie.getValue());
-    }
+//    public void KontrastChange(MouseEvent mouseEvent) throws IOException {
+//        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+//        ImageIO.write(temp, "PNG", outfile);
+//        processor.contrast((int)Math.round(kontrast.getValue()));
+//        bufferedImage = ImageIO.read(processedfile);
+//        image = SwingFXUtils.toFXImage(bufferedImage,null);
+//        imageView.setImage(image);
+//
+//    }
+//
+//    public void NasycenieChanged(MouseEvent mouseEvent) throws IOException {
+//        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+//        ImageIO.write(temp, "PNG", outfile);
+//        processor.saturation((int)Math.round(nasycenie.getValue()));
+//        bufferedImage = ImageIO.read(processedfile);
+//        image = SwingFXUtils.toFXImage(bufferedImage,null);
+//        imageView.setImage(image);
+//    }
+//
+//    public void JasnoscChanged(MouseEvent mouseEvent) {
+//        System.out.println(jasnosc.getValue());
+//    }
+//
+//    public void TemperaturaChanged(MouseEvent mouseEvent) {
+//        System.out.println(temperatura.getValue());
+//    }
+//
+//    public void BalansChanged(MouseEvent mouseEvent) {
+//        System.out.println(balans.getValue());
+//    }
+//
+//    public void WyostrzenieChanged(MouseEvent mouseEvent) {
+//        System.out.println(wyostrzanie.getValue());
+//    }
+//
+//    public void RozmycieChanged(MouseEvent mouseEvent) {
+//        System.out.println(rozmycie.getValue());
+//    }
 
 
     @Override
@@ -168,5 +177,19 @@ public class Controller {
         bufferedImage = ImageIO.read(lumFile);
         lum = SwingFXUtils.toFXImage(bufferedImage,null);
         lumView.setImage(lum);
+    }
+
+    public void slidersChange(MouseEvent mouseEvent) throws IOException {
+        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+        ImageIO.write(temp, "PNG", outfile);
+        processor.all_operations((int)Math.round(kontrast.getValue()),
+                (int)Math.round(jasnosc.getValue()),
+                (int)Math.round(nasycenie.getValue()),
+                1,
+                6500,
+                1, 1, 1);
+        bufferedImage = ImageIO.read(processedfile);
+        image = SwingFXUtils.toFXImage(bufferedImage,null);
+        imageView.setImage(image);
     }
 }
