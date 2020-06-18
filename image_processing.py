@@ -207,12 +207,13 @@ class ImageProcessing():
         enhancer = ImageEnhance.Sharpness(img)
         img = enhancer.enhance(sharpness)
         # # color temperature
-        # r, g, b = self.kelvin_table[temperature]
-        # matrix = (r / 255.0, 0.0, 0.0, 0.0, 0.0, g / 255.0, 0.0, 0.0, 0.0, 0.0, b / 255.0, 0.0)
-        # img = img.convert("RGB", matrix)
+        r, g, b = self.kelvin_table[temperature]
+        matrix = (r / 255.0, 0.0, 0.0, 0.0, 0.0, g / 255.0, 0.0, 0.0, 0.0, 0.0, b / 255.0, 0.0)
+        img = img.convert("RGB")
+        img = img.convert("RGB", matrix)
         # # color balance
-        # matrix = (r_scalar, 0.0, 0.0, 0.0, 0.0, g_scalar, 0.0, 0.0, 0.0, 0.0, b_scalar, 0.0)
-        # img = img.convert("RGB", matrix)
+        matrix = (r_scalar , 0.0, 0.0, 0.0, 0.0, g_scalar, 0.0, 0.0, 0.0, 0.0, b_scalar, 0.0)
+        img = img.convert("RGB", matrix)
         img.save('swap/processed.png')
 
 if __name__ == "__main__":

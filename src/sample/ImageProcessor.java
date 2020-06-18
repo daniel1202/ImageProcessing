@@ -8,5 +8,5 @@ public interface ImageProcessor {
     void smoothing();
     void sharpening();
     void color_temperature(int value);
-    void all_operations(int contrast, int brightness, int saturation, int sharpness, int temperature, int r_scalar, int g_scalar, int b_scalar);
+    void all_operations(int contrast, int brightness, int saturation, int sharpness, int temperature, double r_scalar, double g_scalar, double b_scalar);
 }

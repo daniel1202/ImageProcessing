@@ -85,10 +85,11 @@ public class Controller {
         kontrast.setValue(0);
         nasycenie.setValue(0);
         jasnosc.setValue(0);
-        temperatura.setValue(0);
-        balansCzerwony.setValue(0);
-        balansNiebieski.setValue(0);
-        balansZielony.setValue(0);
+        ostrosc.setValue(1);
+        temperatura.setValue(5600);
+        balansCzerwony.setValue(1);
+        balansNiebieski.setValue(1);
+        balansZielony.setValue(1);
     }
     public void saveImage(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
@@ -185,12 +186,13 @@ public class Controller {
     public void slidersChange(MouseEvent mouseEvent) throws IOException {
         BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
         ImageIO.write(temp, "PNG", outfile);
+        System.out.println();
         processor.all_operations((int)Math.round(kontrast.getValue()),
                 (int)Math.round(jasnosc.getValue()),
                 (int)Math.round(nasycenie.getValue()),
-                1,
-                6500,
-                1, 1, 1);
+                (int)ostrosc.getValue(),
+                (int)temperatura.getValue(),
+                balansCzerwony.getValue(), balansZielony.getValue(), balansNiebieski.getValue());
         bufferedImage = ImageIO.read(processedfile);
         image = SwingFXUtils.toFXImage(bufferedImage,null);
         imageView.setImage(image);
