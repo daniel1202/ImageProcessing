@@ -84,7 +84,7 @@
                            </HBox.margin></Button>
                      </children>
                   </HBox>
-                  <Slider fx:id="temperatura" majorTickUnit="100.0" max="12000" min="1000" minorTickCount="0" onMouseReleased="#slidersChange" snapToTicks="true" value="5600">
+                  <Slider fx:id="temperatura" majorTickUnit="100.0" max="40000.0" min="1000" minorTickCount="0" onMouseReleased="#slidersChange" snapToTicks="true" value="5600">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -102,7 +102,7 @@
                            </HBox.margin></Button>
                      </children>
                   </HBox>
-                  <Slider fx:id="ostrosc" blockIncrement="0.1" max="10.0" min="0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="239.0" value="1">
+                  <Slider fx:id="ostrosc" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="239.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -120,7 +120,7 @@
                            </HBox.margin></Button>
                      </children>
                   </HBox>
-                  <Slider fx:id="balansCzerwony" blockIncrement="0.1" max="10.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
+                  <Slider fx:id="balansCzerwony" blockIncrement="0.1" max="2.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="25.0" prefWidth="76.0" text="Balans Zielony" />
@@ -130,7 +130,7 @@
                            </HBox.margin></Button>
                      </children>
                   </HBox>
-                  <Slider fx:id="balansZielony" blockIncrement="0.1" max="10.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
+                  <Slider fx:id="balansZielony" blockIncrement="0.1" max="2.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="26.0" prefWidth="86.0" text="Balans Niebieski" />
@@ -140,7 +140,7 @@
                            </HBox.margin></Button>
                      </children>
                   </HBox>
-                  <Slider fx:id="balansNiebieski" blockIncrement="0.1" max="10.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
+                  <Slider fx:id="balansNiebieski" blockIncrement="0.1" max="2.0" min="0" onMouseReleased="#slidersChange" value="1.0" />
                </children>
             </VBox>
          </children>
