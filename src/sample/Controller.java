@@ -28,9 +28,12 @@ public class Controller {
     public Slider nasycenie;
     public Slider jasnosc;
     public Slider temperatura;
-    public Slider balans;
-    public Slider wyostrzanie;
-    public Slider rozmycie;
+    public Slider ostrosc;
+    //balans slidery
+    public Slider balansCzerwony;
+    public Slider balansZielony;
+    public Slider balansNiebieski;
+    //pliki histogramów i zdjeć
     private File outfile = new File("swap\\image.png");
     private File processedfile = new File("swap\\processed.png");
     private File redFile = new File("swap\\red.png");
@@ -83,9 +86,9 @@ public class Controller {
         nasycenie.setValue(0);
         jasnosc.setValue(0);
         temperatura.setValue(0);
-        balans.setValue(0);
-        wyostrzanie.setValue(0);
-        rozmycie.setValue(0);
+        balansCzerwony.setValue(0);
+        balansNiebieski.setValue(0);
+        balansZielony.setValue(0);
     }
     public void saveImage(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
@@ -158,9 +161,9 @@ public class Controller {
     }
 
     public void loadHistograms(ActionEvent actionEvent) throws IOException {
-        BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
-        ImageIO.write(temp, "PNG", outfile);
-        processor.histograms();
+//        BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
+//        ImageIO.write(temp, "PNG", outfile);
+//        processor.histograms();
 
         bufferedImage = ImageIO.read(redFile);
         red = SwingFXUtils.toFXImage(bufferedImage,null);

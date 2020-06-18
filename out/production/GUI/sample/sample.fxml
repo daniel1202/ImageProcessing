@@ -5,30 +5,30 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panel" prefHeight="750.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="panel" prefHeight="950.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ImageView id="imageView" fx:id="imageView" fitHeight="467.0" fitWidth="633.0" layoutX="252.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="324.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="515.0" AnchorPane.topAnchor="9.0">
+      <ImageView id="imageView" fx:id="imageView" fitHeight="490.0" fitWidth="420.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1286.0" AnchorPane.topAnchor="397.0">
          <viewport>
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <VBox prefHeight="604.0" prefWidth="219.0" spacing="50.0">
+      <VBox layoutX="98.0" prefHeight="406.0" prefWidth="219.0" spacing="10.0">
          <children>
             <VBox prefHeight="63.0" prefWidth="219.0">
                <children>
                   <Button id="Save" fx:id="saveBtn" mnemonicParsing="false" onAction="#saveImage" text="Save">
                      <VBox.margin>
-                        <Insets left="10.0" top="5.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Button>
                   <Button id="Load" fx:id="loadBtn" mnemonicParsing="false" onAction="#loadImage" text="Load">
                      <VBox.margin>
-                        <Insets left="10.0" top="5.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Button>
                   <Button fx:id="Histograms" mnemonicParsing="false" onAction="#loadHistograms" text="Histograms">
                      <VBox.margin>
-                        <Insets left="10.0" top="5.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -37,32 +37,32 @@
                <children>
                   <Label text="Kontrast">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Label>
                   <Slider fx:id="kontrast" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Slider>
                   <Label text="Nasycenie">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Label>
                   <Slider fx:id="nasycenie" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="245.0">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Slider>
                   <Label text="Jasność">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Label>
                   <Slider fx:id="jasnosc" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="245.0">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Slider>
                </children>
@@ -71,55 +71,45 @@
                <children>
                   <Label text="Temperatura">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Label>
                   <Slider fx:id="temperatura" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange">
                      <VBox.margin>
-                        <Insets left="5.0" />
-                     </VBox.margin>
-                  </Slider>
-                  <Label text="Balans">
-                     <VBox.margin>
-                        <Insets left="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Slider fx:id="balans" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange">
-                     <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Slider>
                </children>
             </VBox>
             <VBox prefHeight="118.0" prefWidth="219.0">
                <children>
-                  <Label text="Wyostrzanie">
+                  <Label text="Ostrość">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Label>
-                  <Slider fx:id="wyostrzanie" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange">
+                  <Slider fx:id="ostrosc" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" prefHeight="14.0" prefWidth="239.0">
                      <VBox.margin>
-                        <Insets left="5.0" />
-                     </VBox.margin>
-                  </Slider>
-                  <Label text="Rozmycie">
-                     <VBox.margin>
-                        <Insets left="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Slider fx:id="rozmycie" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange">
-                     <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Slider>
                </children>
             </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Balans Czerwony" />
+                  <Slider fx:id="balansCzerwony" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" />
+                  <Label text="Balans Zielony" />
+                  <Slider fx:id="balansZielony" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" />
+                  <Label text="Balans Niebieski" />
+                  <Slider fx:id="balansNiebieski" blockIncrement="0.1" max="10.0" min="-10.0" onMouseReleased="#slidersChange" />
+               </children>
+            </VBox>
          </children>
       </VBox>
-      <ImageView fx:id="lumView" fitHeight="250.0" fitWidth="500.0" layoutX="511.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="blueView" fitHeight="250.0" fitWidth="500.0" layoutX="1011.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="redView" fitHeight="250.0" fitWidth="500.0" layoutX="1011.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="greenView" fitHeight="250.0" fitWidth="500.0" layoutX="1011.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="lumView" fitHeight="480.0" fitWidth="640.0" layoutX="420.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blueView" fitHeight="480.0" fitWidth="640.0" layoutX="1060.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="redView" fitHeight="480.0" fitWidth="640.0" layoutX="420.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="greenView" fitHeight="480.0" fitWidth="640.0" layoutX="1060.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
