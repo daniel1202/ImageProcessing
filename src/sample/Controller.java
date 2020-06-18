@@ -22,6 +22,7 @@ public class Controller {
     public ImageView imageView;
     public BufferedImage bufferedImage;
     public Image image;
+    public Image originalimage;
     public AnchorPane panel;
     public Slider kontrast;
     public Slider nasycenie;
@@ -30,8 +31,8 @@ public class Controller {
     public Slider balans;
     public Slider wyostrzanie;
     public Slider rozmycie;
-    private File outfile = new File("image.jpg");
-    private File processedfile = new File("processed.jpg");
+    private File outfile = new File("swap\\image.png");
+    private File processedfile = new File("swap\\processed.png");
 
     public ImageProcessor processor;
     public BarChart luminacja;
@@ -61,6 +62,7 @@ public class Controller {
           try{
            bufferedImage = ImageIO.read(file);
               image = SwingFXUtils.toFXImage(bufferedImage,null);
+              originalimage = SwingFXUtils.toFXImage(bufferedImage,null);
               imageView.setImage(image);
           } catch (IOException e) {
               e.printStackTrace();
@@ -94,17 +96,22 @@ public class Controller {
     }
 
     public void KontrastChange(MouseEvent mouseEvent) throws IOException {
-        BufferedImage temp = SwingFXUtils.fromFXImage(image, null);
-        ImageIO.write(temp, "jpg", outfile);
-//        processor.contrast((int)Math.round(kontrast.getValue()));
-//        bufferedImage = ImageIO.read(processedfile);
-//        image = SwingFXUtils.toFXImage(bufferedImage,null);
-//        imageView.setImage(image);
+        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+        ImageIO.write(temp, "PNG", outfile);
+        processor.contrast((int)Math.round(kontrast.getValue()));
+        bufferedImage = ImageIO.read(processedfile);
+        image = SwingFXUtils.toFXImage(bufferedImage,null);
+        imageView.setImage(image);
 
     }
 
-    public void NasycenieChanged(MouseEvent mouseEvent) {
-        System.out.println(nasycenie.getValue());
+    public void NasycenieChanged(MouseEvent mouseEvent) throws IOException {
+        BufferedImage temp = SwingFXUtils.fromFXImage(originalimage, null);
+        ImageIO.write(temp, "PNG", outfile);
+        processor.saturation((int)Math.round(nasycenie.getValue()));
+        bufferedImage = ImageIO.read(processedfile);
+        image = SwingFXUtils.toFXImage(bufferedImage,null);
+        imageView.setImage(image);
     }
 
     public void JasnoscChanged(MouseEvent mouseEvent) {

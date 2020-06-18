@@ -149,10 +149,12 @@ class ImageProcessing():
         plt.clf()
     
     def contrast(self, contrast):
-        img = Image.open('swap/image.jpg')
+        contrast += 10
+        contrast /= 10
+        img = Image.open('swap/image.png')
         cont = ImageEnhance.Contrast(img)
         img = cont.enhance(contrast)
-        img.save('swap/processed.jpg')
+        img.save('swap/processed.png')
 
     def brightness(self, brightness):
         img = Image.open('swap/image.jpg')
@@ -161,10 +163,13 @@ class ImageProcessing():
         img.save('swap/processed.jpg')
 
     def saturation(self, saturation):
-        img = Image.open('swap/image.jpg')
+        saturation += 10
+        saturation /=10
+        print(saturation)
+        img = Image.open('swap/image.png')
         sat = ImageEnhance.Color(img)
         img = sat.enhance(saturation)
-        img.save('swap/processed.jpg')
+        img.save('swap/processed.png')
 
     def smoothing(self):
         image = cv2.imread('swap/image.jpg')
